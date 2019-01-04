@@ -9,8 +9,5 @@
 /build
 /captures
 .externalNativeBuild
-
-*.iml
 *.log
-*.iml
 .gradle
