@@ -58,14 +58,16 @@ public class EssMediaCollection implements LoaderManager.LoaderCallbacks<Cursor>
         }
 
         List<EssFile> essFileList = new ArrayList<>();
-        while (data.moveToNext()){
+        while (data.moveToNext()) {
             EssFile essFile = new EssFile(data.getLong(data.getColumnIndexOrThrow(MediaStore.MediaColumns._ID)),
                     data.getString(data.getColumnIndexOrThrow(MediaStore.MediaColumns.MIME_TYPE)));
-            if(data.getLong(data.getColumnIndexOrThrow(MediaStore.MediaColumns._ID))==-1){
+            if (!essFile.isImageCanHandle())
+                continue;
+            if (data.getLong(data.getColumnIndexOrThrow(MediaStore.MediaColumns._ID)) == -1) {
                 //capture
                 essFile.setItemType(EssFile.CAPTURE);
             }
-            if(essFileSet.contains(essFile)){
+            if (essFileSet.contains(essFile)) {
                 essFile.setChecked(true);
             }
             essFileList.add(essFile);
@@ -104,10 +106,10 @@ public class EssMediaCollection implements LoaderManager.LoaderCallbacks<Cursor>
         this.essFileSet = essFileSet;
         args.putParcelable(ARGS_ALBUM, target);
         args.putBoolean(ARGS_ENABLE_CAPTURE, enableCapture);
-        if(mContext.get() == null){
+        if (mContext.get() == null) {
             mLoaderManager.initLoader(LOADER_ID, args, this);
-        }else {
-            mLoaderManager.restartLoader(LOADER_ID,args,this);
+        } else {
+            mLoaderManager.restartLoader(LOADER_ID, args, this);
         }
     }
 
@@ -116,10 +118,10 @@ public class EssMediaCollection implements LoaderManager.LoaderCallbacks<Cursor>
         args.putParcelable(ARGS_ALBUM, target);
         args.putBoolean(ARGS_ENABLE_CAPTURE, enableCapture);
         args.putBoolean(ARGS_ONLY_SHOWIMAGE, onlyShouwIMage);
-        if(mContext.get() == null){
+        if (mContext.get() == null) {
             mLoaderManager.initLoader(LOADER_ID, args, this);
-        }else {
-            mLoaderManager.restartLoader(LOADER_ID,args,this);
+        } else {
+            mLoaderManager.restartLoader(LOADER_ID, args, this);
         }
     }
 

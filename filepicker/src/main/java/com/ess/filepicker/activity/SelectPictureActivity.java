@@ -5,10 +5,10 @@ import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -18,7 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.ess.filepicker.R;
 import com.ess.filepicker.SelectOptions;
@@ -32,15 +31,14 @@ import com.ess.filepicker.util.Const;
 import com.ess.filepicker.util.UiUtils;
 import com.ess.filepicker.widget.MediaItemDecoration;
 import com.ess.filepicker.widget.ToolbarSpinner;
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-
-import top.zibin.luban.Luban;
-import top.zibin.luban.OnCompressListener;
 
 
 /**
@@ -131,6 +129,9 @@ public class SelectPictureActivity extends AppCompatActivity implements EssAlbum
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        if (SelectOptions.getInstance().isSingle || SelectOptions.getInstance().maxCount == 1) {
+            return true;
+        }
         getMenuInflater().inflate(R.menu.media_menu, menu);
         mCountMenuItem = menu.findItem(R.id.browser_select_count);
         mCountMenuItem.setTitle(String.format(getString(R.string.selected_file_count), String.valueOf(mSelectedFileList.size()), String.valueOf(mMaxCount)));
@@ -191,7 +192,8 @@ public class SelectPictureActivity extends AppCompatActivity implements EssAlbum
         if (view.getId() == R.id.check_view) {
             if (mSelectedFileList.size() >= SelectOptions.getInstance().maxCount && !item.isChecked()) {
                 mMediaAdapter.notifyItemChanged(position, "");
-                Snackbar.make(mRecyclerView, "您最多只能选择" + SelectOptions.getInstance().maxCount + "个。", Snackbar.LENGTH_SHORT).show();
+                //Snackbar.make(mRecyclerView, "您最多只能选择" + SelectOptions.getInstance().maxCount + "个。", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(mRecyclerView, String.format(getString(R.string.filepicker_selected_max),String.valueOf(SelectOptions.getInstance().maxCount)), Snackbar.LENGTH_SHORT).show();
                 return;
             }
             boolean addSuccess = mSelectedFileList.add(mMediaAdapter.getItem(position));
@@ -239,7 +241,7 @@ public class SelectPictureActivity extends AppCompatActivity implements EssAlbum
                             @Override
                             public void onSuccess(File file) {
                                 successCount[0]++;
-                                if(successCount[0] == imageList.size()){
+                                if (successCount[0] == imageList.size()) {
                                     Intent result = new Intent();
                                     result.putParcelableArrayListExtra(Const.EXTRA_RESULT_SELECTION, EssFile.getEssFileList(SelectPictureActivity.this, mSelectedFileList));
                                     setResult(RESULT_OK, result);
@@ -253,7 +255,7 @@ public class SelectPictureActivity extends AppCompatActivity implements EssAlbum
                             }
                         })
                         .launch();    //启动压缩
-            }else {
+            } else {
                 Intent result = new Intent();
                 result.putParcelableArrayListExtra(Const.EXTRA_RESULT_SELECTION, EssFile.getEssFileList(SelectPictureActivity.this, mSelectedFileList));
                 setResult(RESULT_OK, result);

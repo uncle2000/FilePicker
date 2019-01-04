@@ -99,7 +99,7 @@ public class SelectFileByBrowserActivity extends AppCompatActivity
     private void initUi() {
         mToolBar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolBar);
-        getSupportActionBar().setTitle("文件选择");
+        getSupportActionBar().setTitle(getString(R.string.filepicker_selected_file));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -253,7 +253,8 @@ public class SelectFileByBrowserActivity extends AppCompatActivity
                 } else {
                     if (mSelectedFileList.size() >= SelectOptions.getInstance().maxCount) {
                         //超出最大可选择数量后
-                        Snackbar.make(mRecyclerView, "您最多只能选择" + SelectOptions.getInstance().maxCount + "个。", Snackbar.LENGTH_SHORT).show();
+                        //Snackbar.make(mRecyclerView, "您最多只能选择" + SelectOptions.getInstance().maxCount + "个。", Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(mRecyclerView, String.format(getString(R.string.filepicker_selected_max),String.valueOf(SelectOptions.getInstance().maxCount)), Snackbar.LENGTH_SHORT).show();
                         return;
                     }
                     mSelectedFileList.add(item);
@@ -342,7 +343,7 @@ public class SelectFileByBrowserActivity extends AppCompatActivity
                             mSelectSortTypeIndex = which;
                         }
                     })
-                    .setNegativeButton("降序", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(getString(R.string.filepicker_sort_desc), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             switch (mSelectSortTypeIndex) {
@@ -364,7 +365,7 @@ public class SelectFileByBrowserActivity extends AppCompatActivity
                             executeListTask(mSelectedFileList, mCurFolder, SelectOptions.getInstance().getFileTypes(),SelectOptions.getInstance().getSortType());
                         }
                     })
-                    .setPositiveButton("升序", new DialogInterface.OnClickListener() {
+                    .setPositiveButton(getString(R.string.filepicker_sort_asc), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             switch (mSelectSortTypeIndex) {
@@ -386,7 +387,7 @@ public class SelectFileByBrowserActivity extends AppCompatActivity
                             executeListTask(mSelectedFileList, mCurFolder, SelectOptions.getInstance().getFileTypes(),SelectOptions.getInstance().getSortType());
                         }
                     })
-                    .setTitle("请选择")
+                    .setTitle(getString(R.string.filepicker_please_select))
                     .show();
 
         }

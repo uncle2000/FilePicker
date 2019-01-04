@@ -158,7 +158,7 @@ public class FileTypeListFragment extends BaseFileFragment implements BaseQuickA
         } else {
             if (mMaxCount <= 0) {
                 //超出最大可选择数量后
-                Snackbar.make(mRecyclerView, "您最多只能选择" + SelectOptions.getInstance().maxCount + "个。", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(mRecyclerView, String.format(getString(R.string.filepicker_selected_max),String.valueOf(SelectOptions.getInstance().maxCount)), Snackbar.LENGTH_SHORT).show();
                 return;
             }
             mSelectedFileList.add(item);

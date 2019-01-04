@@ -67,7 +67,7 @@ public class SelectFileByScanActivity extends AppCompatActivity implements ViewP
         mTabLayout = findViewById(R.id.tabl_select_file_scan);
         mToolBar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolBar);
-        getSupportActionBar().setTitle("文件选择");
+        getSupportActionBar().setTitle(getString(R.string.filepicker_selected_file));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -154,7 +154,7 @@ public class SelectFileByScanActivity extends AppCompatActivity implements ViewP
                             mSelectSortTypeIndex = which;
                         }
                     })
-                    .setNegativeButton("降序", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(getString(R.string.filepicker_sort_desc), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             switch (mSelectSortTypeIndex) {
@@ -171,7 +171,7 @@ public class SelectFileByScanActivity extends AppCompatActivity implements ViewP
                             EventBus.getDefault().post(new FileScanSortChangedEvent(SelectOptions.getInstance().getSortType(),mViewPager.getCurrentItem()));
                         }
                     })
-                    .setPositiveButton("升序", new DialogInterface.OnClickListener() {
+                    .setPositiveButton(getString(R.string.filepicker_sort_asc), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             switch (mSelectSortTypeIndex) {
@@ -188,7 +188,7 @@ public class SelectFileByScanActivity extends AppCompatActivity implements ViewP
                             EventBus.getDefault().post(new FileScanSortChangedEvent(SelectOptions.getInstance().getSortType(),mViewPager.getCurrentItem()));
                         }
                     })
-                    .setTitle("请选择")
+                    .setTitle(getString(R.string.filepicker_please_select))
                     .show();
 
         }

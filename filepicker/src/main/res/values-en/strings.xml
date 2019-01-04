@@ -1,0 +1,32 @@
+<resources>
+    <string name="folder_desc">File:%1$s&#160;&#160;|&#160;&#160;Folder:%2$s</string>
+    <string name="file_desc">%1$s&#160;&#160;|&#160;&#160;%2$s</string>
+    <string name="selected_file_count">Select(%1$s/%2$s)</string>
+    <string-array name="sort_list">
+        <item>By name</item>
+        <item>By time</item>
+        <item>By size</item>
+        <item>By type</item>
+    </string-array>
+    <string-array name="sort_list_scan">
+        <item>By name</item>
+        <item>By time</item>
+        <item>By size</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="filepicker_selected_max">You can only select up to %1$s.</string>
+    <string name="filepicker_selected_file">File selection</string>
+    <string name="filepicker_please_select">Please select</string>
+    <string name="filepicker_sort_desc">Descending</string>
+    <string name="filepicker_sort_asc">Ascending</string>
+    <string name="filepicker_all">All</string>
+
+    <string name="filepicker_permission1">You need to allow </string>
+    <string name="filepicker_permission2"> permission. Please turn this permission on in rights management.</string>
+    <string name="filepicker_hint">Hint</string>
+    <string name="filepicker_confirm">Confirm</string>
+    <string name="filepicker_cancel">Cancel</string>
+</resources>

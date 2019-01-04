@@ -45,7 +45,7 @@ public class FileListAdapter extends BaseQuickAdapter<EssFile, BaseViewHolder> {
         TextView textView = helper.getView(R.id.tv_item_file_list_desc);
         if (item.isDirectory()) {
             helper.setVisible(R.id.iv_item_file_select_right, true);
-            if(item.getChildFolderCount().equals("加载中")){
+            if(item.getChildFolderCount().equals("Loading")){
                 //查找数量
                 if(loadFileCountListener!=null){
                     loadFileCountListener.onLoadFileCount(helper.getAdapterPosition());

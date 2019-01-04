@@ -90,9 +90,9 @@ public final class FileUtils {
         for (int i = 0; i < mSdCardList.size(); i++) {
             if (i == 0) {
                 //内部存储设备
-                path = path.replace(mSdCardList.get(i), "/内部存储设备");
+                path = path.replace(mSdCardList.get(i), "/InternalStorage");
             } else {
-                path = path.replace(mSdCardList.get(i), "/SD卡" + i);
+                path = path.replace(mSdCardList.get(i), "/SDCard" + i);
             }
         }
         if (!TextUtils.isEmpty(path)) {
@@ -127,10 +127,10 @@ public final class FileUtils {
             }
         }
         String resultStr = result.toString();
-        if (resultStr.startsWith("/内部存储设备")) {
-            resultStr = resultStr.replace("/内部存储设备", mSdCardList.get(0));
-        } else if (resultStr.startsWith("/SD卡")) {
-            resultStr = resultStr.replace("/SD卡" + String.valueOf(resultStr.charAt(4)), mSdCardList.get(Integer.valueOf(String.valueOf(resultStr.charAt(4)))));
+        if (resultStr.startsWith("/InternalStorage")) {
+            resultStr = resultStr.replace("/InternalStorage", mSdCardList.get(0));
+        } else if (resultStr.startsWith("/SDCard")) {
+            resultStr = resultStr.replace("/SDCard" + String.valueOf(resultStr.charAt(4)), mSdCardList.get(Integer.valueOf(String.valueOf(resultStr.charAt(4)))));
         }
         return resultStr;
     }
@@ -145,10 +145,10 @@ public final class FileUtils {
         if(TextUtils.isEmpty(sdCardName)){
             return Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator;
         }
-        if(sdCardName.startsWith("内部存储设备")){
+        if(sdCardName.startsWith("InternalStorage")){
             return mSdCardList.get(0) + File.separator;
         }
-        if(sdCardName.startsWith("SD卡")){
+        if(sdCardName.startsWith("SDCard")){
             return mSdCardList.get(Integer.valueOf(String.valueOf(sdCardName.charAt(3)))) + File.separator;
         }
         return Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator;
@@ -931,9 +931,9 @@ public final class FileUtils {
         for (int i = 0; i < sdCardList.size(); i++) {
             if (i == 0) {
                 //内部存储设备
-                resultList.add("内部存储设备");
+                resultList.add("InternalStorage");
             } else {
-                resultList.add("SD卡"+i);
+                resultList.add("SDCard"+i);
             }
         }
         return resultList;

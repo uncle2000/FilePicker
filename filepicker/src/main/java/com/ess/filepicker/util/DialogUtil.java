@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
+import com.ess.filepicker.R;
 
 /**
  * DialogUtil
@@ -19,16 +20,16 @@ public class DialogUtil {
     public static void showPermissionDialog(final Activity mActivity, String permission) {
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
         builder
-                .setMessage("您未授权 " + permission + " 权限, 请在权限管理中开启此权限。")
-                .setTitle("提示")
-                .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                .setMessage(mActivity.getString(R.string.filepicker_permission1) + permission + mActivity.getString(R.string.filepicker_permission2))
+                .setTitle(mActivity.getString(R.string.filepicker_hint))
+                .setPositiveButton(mActivity.getString(R.string.filepicker_confirm), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(Settings.ACTION_SETTINGS);
                         mActivity.startActivity(intent);
                     }
                 })
-                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                .setNegativeButton(mActivity.getString(R.string.filepicker_cancel), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();

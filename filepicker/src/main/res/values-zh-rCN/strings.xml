@@ -1,0 +1,32 @@
+<resources>
+    <string name="folder_desc">文件:%1$s&#160;&#160;|&#160;&#160;文件夹:%2$s</string>
+    <string name="file_desc">%1$s&#160;&#160;|&#160;&#160;%2$s</string>
+    <string name="selected_file_count">选中(%1$s/%2$s)</string>
+    <string-array name="sort_list">
+        <item>按名称</item>
+        <item>按时间</item>
+        <item>按大小</item>
+        <item>按类型</item>
+    </string-array>
+    <string-array name="sort_list_scan">
+        <item>按名称</item>
+        <item>按时间</item>
+        <item>按大小</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="filepicker_selected_max">您最多只能选择%1$s个。</string>
+    <string name="filepicker_selected_file">文件选择</string>
+    <string name="filepicker_please_select">请选择</string>
+    <string name="filepicker_sort_desc">降序</string>
+    <string name="filepicker_sort_asc">升序</string>
+    <string name="filepicker_all">全部</string>
+
+    <string name="filepicker_permission1">您未授权 </string>
+    <string name="filepicker_permission2"> 权限, 请在权限管理中开启此权限。</string>
+    <string name="filepicker_hint">提示</string>
+    <string name="filepicker_confirm">确认</string>
+    <string name="filepicker_cancel">取消</string>
+</resources>

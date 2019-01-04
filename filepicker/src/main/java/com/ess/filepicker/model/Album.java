@@ -23,6 +23,7 @@ import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 
+import com.ess.filepicker.R;
 import com.ess.filepicker.loader.EssAlbumLoader;
 
 public class Album implements Parcelable {
@@ -103,7 +104,7 @@ public class Album implements Parcelable {
 
     public String getDisplayName(Context context) {
         if (isAll()) {
-            return "全部";
+            return context.getString(R.string.filepicker_all);
         }
         return mDisplayName;
     }

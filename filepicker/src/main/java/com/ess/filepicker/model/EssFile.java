@@ -28,8 +28,8 @@ public class EssFile implements Parcelable {
 
     private String mFilePath;
     private String mimeType;
-    private String childFolderCount = "加载中";
-    private String childFileCount = "加载中";
+    private String childFolderCount = "Loading";
+    private String childFileCount = "Loading";
     private boolean isChecked = false;
     private boolean isExits = false;
     private boolean isDirectory = false;
@@ -209,6 +209,13 @@ public class EssFile implements Parcelable {
         return mimeType.equals(MimeType.JPEG.toString())
                 || mimeType.equals(MimeType.PNG.toString())
                 || mimeType.equals(MimeType.GIF.toString())
+                || mimeType.equals(MimeType.BMP.toString())
+                || mimeType.equals(MimeType.WEBP.toString());
+    }
+    public boolean isImageCanHandle() {
+        if (mimeType == null) return false;
+        return mimeType.equals(MimeType.JPEG.toString())
+                || mimeType.equals(MimeType.PNG.toString())
                 || mimeType.equals(MimeType.BMP.toString())
                 || mimeType.equals(MimeType.WEBP.toString());
     }
