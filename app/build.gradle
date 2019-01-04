@@ -6,11 +6,11 @@ apply plugin: 'com.github.dcendents.android-maven'
 //设置Jitpack发布的Group
 group = 'com.github.uncle2000'
 android {
-    compileSdkVersion COMPILE_SDK_VERSION as int
+    compileSdkVersion 28
 
     defaultConfig {
-        minSdkVersion MIN_COMPILE_SDK_VERSION as int
-        targetSdkVersion COMPILE_SDK_VERSION as int
+        minSdkVersion 16
+        targetSdkVersion 28
         applicationId "com.imlibo.essfilepicker"
         versionCode 1
         versionName "1.0"
