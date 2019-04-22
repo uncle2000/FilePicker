@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.ess.filepicker.R;
 import com.ess.filepicker.SelectOptions;
@@ -31,14 +32,15 @@ import com.ess.filepicker.util.Const;
 import com.ess.filepicker.util.UiUtils;
 import com.ess.filepicker.widget.MediaItemDecoration;
 import com.ess.filepicker.widget.ToolbarSpinner;
-import top.zibin.luban.Luban;
-import top.zibin.luban.OnCompressListener;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 
 /**
@@ -193,7 +195,7 @@ public class SelectPictureActivity extends AppCompatActivity implements EssAlbum
             if (mSelectedFileList.size() >= SelectOptions.getInstance().maxCount && !item.isChecked()) {
                 mMediaAdapter.notifyItemChanged(position, "");
                 //Snackbar.make(mRecyclerView, "您最多只能选择" + SelectOptions.getInstance().maxCount + "个。", Snackbar.LENGTH_SHORT).show();
-                Snackbar.make(mRecyclerView, String.format(getString(R.string.filepicker_selected_max),String.valueOf(SelectOptions.getInstance().maxCount)), Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(mRecyclerView, String.format(getString(R.string.filepicker_selected_max), String.valueOf(SelectOptions.getInstance().maxCount)), Snackbar.LENGTH_SHORT).show();
                 return;
             }
             boolean addSuccess = mSelectedFileList.add(mMediaAdapter.getItem(position));
@@ -223,7 +225,7 @@ public class SelectPictureActivity extends AppCompatActivity implements EssAlbum
             if (mSelectedFileList.isEmpty()) {
                 return true;
             }
-            if (SelectOptions.getInstance().compressImage) {
+            if (SelectOptions.getInstance().compressImage && SelectOptions.getInstance().onlyShowImages) {
                 //需要压缩
                 final ArrayList<String> imageList = EssFile.getFilePathList(EssFile.getEssFileList(this, mSelectedFileList));
                 final int[] successCount = {0};
