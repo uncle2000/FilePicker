@@ -212,13 +212,6 @@ public class EssFile implements Parcelable {
                 || mimeType.equals(MimeType.BMP.toString())
                 || mimeType.equals(MimeType.WEBP.toString());
     }
-    public boolean isImageCanHandle() {
-        if (mimeType == null) return false;
-        return mimeType.equals(MimeType.JPEG.toString())
-                || mimeType.equals(MimeType.PNG.toString())
-                || mimeType.equals(MimeType.BMP.toString())
-                || mimeType.equals(MimeType.WEBP.toString());
-    }
 
     public boolean isGif() {
         if (mimeType == null) return false;

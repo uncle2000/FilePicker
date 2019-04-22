@@ -61,8 +61,6 @@ public class EssMediaCollection implements LoaderManager.LoaderCallbacks<Cursor>
         while (data.moveToNext()) {
             EssFile essFile = new EssFile(data.getLong(data.getColumnIndexOrThrow(MediaStore.MediaColumns._ID)),
                     data.getString(data.getColumnIndexOrThrow(MediaStore.MediaColumns.MIME_TYPE)));
-            if (!essFile.isImageCanHandle())
-                continue;
             if (data.getLong(data.getColumnIndexOrThrow(MediaStore.MediaColumns._ID)) == -1) {
                 //capture
                 essFile.setItemType(EssFile.CAPTURE);
