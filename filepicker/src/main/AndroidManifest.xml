@@ -20,7 +20,6 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name="com.ess.filepicker.activity.PicturesViewActivity"/>
     </application>
 
 </manifest>

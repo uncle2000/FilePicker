@@ -78,7 +78,7 @@ public class SelectFileByBrowserActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_file);
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
 
         mSdCardList = FileUtils.getAllSdPaths(this);
         if (!mSdCardList.isEmpty()) {

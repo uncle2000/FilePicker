@@ -45,8 +45,6 @@ dependencies {
     api 'com.jakewharton:butterknife:8.8.1'
     api 'com.yanzhenjie:permission:2.0.0-rc3'
     api project(':filepicker')
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
 
