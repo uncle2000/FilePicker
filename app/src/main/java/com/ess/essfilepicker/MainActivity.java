@@ -66,15 +66,16 @@ public class MainActivity extends AppCompatActivity {
                 .start();
     }
 
-    @OnClick(R.id.button_fragment)
-    public void onFragment(View view){
-        startActivity(new Intent(this,FragmentTestActivity.class));
-    }
+//    @OnClick(R.id.button_fragment)
+//    public void onFragment(View view){
+//        startActivity(new Intent(this,FragmentTestActivity.class));
+//    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         AndPermission
