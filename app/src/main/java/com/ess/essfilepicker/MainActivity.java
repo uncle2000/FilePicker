@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         FilePicker
                 .from(this)
                 .chooseMedia()
-                .onlyShowVideos()
+                .onlyShowImages()
                 .setTheme(R.style.FilePicker_Dracula)
                 .requestCode(REQUEST_CODE_CHOOSE)
                 .start();
